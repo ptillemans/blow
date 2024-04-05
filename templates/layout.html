@@ -30,6 +30,10 @@
       <link href="/css/main.css" rel="stylesheet">
       <link id="syntax_highlight" href="#" rel="stylesheet">
 
+      {% if config.generate_feed %}
+      <link rel="alternate" type="application/atom+xml" href="http://www.swqee.com/rss.xml" title="swqee news">
+      {% endif %}
+
       <title>
         {% block title %}
         {{ config.title }}
@@ -184,6 +188,36 @@
             </div>
           </div>
         {% endif %}
+
+
+        <!-- Atom feed button -->
+        {% if config.generate_feed %}
+
+        <button id="atom" type="button" class=" bg-gray-200 text-gray-800 hover:text-gray-900 dark:bg-gray-800 dark:text-gray-400 dark:hover:text-white p-1 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+          <a href="atom.xml">
+            <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="-25 -26.75 50 50">
+                <title>Atom</title>
+                <style type="text/css">
+                .path { fill:none; stroke:#66899a; }
+                .path + .path { stroke:#e1d85d; }
+                .path + .path + .path { stroke:#80a3cf; }
+                .shell { fill:none; stroke:#4b541f; }
+                .necleus { fill:#80a3cf; stroke:white; }
+                .electron { fill:#66899a; stroke:white; }
+                </style>
+                <ellipse class="path" rx="3" ry="22"/>
+                <ellipse class="path" rx="3" ry="22" transform="rotate(-66)"/>
+                <ellipse class="path" rx="3" ry="22" transform="rotate(66)"/>
+                <circle class="shell" r="22"/>
+                <circle class="necleus" r="6.5"/>
+                <circle class="electron" cy="-22" r="4.5"/>
+                <circle class="electron" cx="-20" cy="9" r="4.5"/>
+                <circle class="electron" cx="20" cy="9" r="4.5"/>
+            </svg>
+          </a>
+        </button>
+        {% endif %}
+
         <!-- Theme switch button -->
         <div class="flex p-2">
           <button id="switch-theme" type="button" class="bg-gray-200 text-gray-800 hover:text-gray-900 dark:bg-gray-800 dark:text-gray-400 dark:hover:text-white p-1 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
@@ -198,6 +232,7 @@
             </svg>
           </button>
 
+          
           <!-- Profile dropdown -->
           <!-- <div class="ml-3 relative">
             <div>
